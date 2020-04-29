@@ -1,0 +1,19 @@
+<ng-container *ngIf="player.disabledButton; then disabledButton; else active"></ng-container>
+
+<ng-template #disabledButton>
+  <button disabled>
+    <h1 [ngClass]="{'red': player.minutes < 1}">
+      {{ player.minutes | numVal }}:{{ player.seconds | numVal }}
+    </h1>
+    <p>moves: {{ player.moveCounter }}</p>
+  </button>
+</ng-template>
+
+<ng-template #active>
+  <button id="active" (click)="pressButton()">
+    <h1 [ngClass]="{'red': player.minutes < 1}">
+      {{ player.minutes | numVal }}:{{ player.seconds | numVal }}
+    </h1>
+    <p>moves: {{ player.moveCounter }}</p>
+  </button>
+</ng-template>

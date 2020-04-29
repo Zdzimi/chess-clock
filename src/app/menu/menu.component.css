@@ -1,0 +1,67 @@
+.po{
+  color: azure;
+  background-color: rgb(50, 36, 129);
+  border: solid 1px azure;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25vh;
+  margin-top: 25vh;
+  display: block;
+}
+
+.po:hover{
+  color: rgb(50, 36, 129);
+  background-color: azure;
+}
+
+.addsub{
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addsub button{
+  color: azure;
+  background-color: rgb(50, 36, 129);
+  border: solid 1px azure;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.addsub button:hover{
+  color:  rgb(50, 36, 129);
+  background-color:azure;
+}
+
+input{
+  border: solid 1px azure;
+  text-align: center;
+  background-color: rgb(50, 36, 129);
+  color: azure;
+}
+
+#subcanc button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+  display: block;
+  color: azure;
+  background-color: rgb(50, 36, 129);
+  border: solid 1px azure;
+}
+
+#subcanc button:hover{
+  color: rgb(50, 36, 129);
+  background-color: azure;
+}
+
+.notCorrect{
+  color: firebrick;
+}
+
+.notC{
+  border: solid 1px firebrick;
+  text-align: center;
+  background-color: rgb(50, 36, 129);
+  color: firebrick;
+}

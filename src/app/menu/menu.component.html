@@ -1,0 +1,104 @@
+<div id="pause">
+
+  <ng-container *ngIf="!paused && !areOptionsVisible; then buttons; else menu"></ng-container>
+
+  <ng-template #buttons>
+    <button class="po" (click)="pause()">Pause</button>
+    <button class="po" (click)="optionsButton()">Options</button>
+  </ng-template>
+
+  <ng-template #menu>
+
+    <ng-container *ngIf="paused">
+      <div class="addsub">
+        <button (click)="addPlayerFirst()">+ {{ options.penaltySeconds }}</button>
+        <button (click)="addPlayerSecond()">+ {{ options.penaltySeconds }}</button>
+      </div>
+      <div class="addsub">
+        <button class="subtract" (click)="subtractPlayerFirst()">- {{ options.penaltySeconds }}</button>
+        <button class="subtract" (click)="subtractPlayerSecond()">- {{ options.penaltySeconds }}</button>
+      </div>
+      <div class="addsub"><button (click)="resume()">resume</button></div>
+      <div class="addsub"><button (click)="restart()">restart</button></div>
+    </ng-container>
+
+    <ng-container *ngIf="areOptionsVisible">
+
+      <form [formGroup]="optionsForm" (ngSubmit)="onSubmit(optionsForm.value)">
+        <div>
+          <label for="gameMinutes">
+            <ng-container *ngIf="validation.gameMinutesIsCorrect; then minutesCorrect; else minutesNotCorrect"></ng-container>
+            <ng-template #minutesCorrect>
+              <p>game minutes:</p>
+            </ng-template>
+            <ng-template #minutesNotCorrect>
+              <p class="notCorrect">game minutes (positive integers from 0 to 59):</p>
+            </ng-template>
+          </label>
+          <input [ngClass]="{'notC': !validation.gameMinutesIsCorrect}" id="gameMinutes" type="number" formControlName="gameMinutes">
+        </div>
+
+        <div>
+          <label for="gameSeconds">
+            <ng-container *ngIf="validation.gameSecondsIsCorrect; then secondsCorrect; else secondsNotCorrect"></ng-container>
+            <ng-template #secondsCorrect>
+              <p>game seconds:</p>
+            </ng-template>
+            <ng-template #secondsNotCorrect>
+              <p class="notCorrect">game seconds (positive integers from 0 to 59):</p>
+            </ng-template>
+          </label>
+          <input [ngClass]="{'notC': !validation.gameSecondsIsCorrect}" id="gameSeconds" type="number" formControlName="gameSeconds">
+        </div>
+
+        <div>
+          <label for="penaltySeconds">
+            <ng-container *ngIf="validation.penaltySecondsIsCorrect; then penaltyCorrect; else penaltyNotCorrect"></ng-container>
+            <ng-template #penaltyCorrect>
+              <p>penalty seconds:</p>
+            </ng-template>
+            <ng-template #penaltyNotCorrect>
+              <p class="notCorrect">penalty seconds (positive integers from 0 to 300):</p>
+            </ng-template>
+          </label>
+          <input [ngClass]="{'notC': !validation.penaltySecondsIsCorrect}" id="penaltySeconds" type="number" formControlName="penaltySeconds">
+        </div>
+
+        <div>
+          <label for="additionSeconds">
+            <ng-container *ngIf="validation.additionSecondsIsCorrect; then additionCorrect; else additionNotCorrect"></ng-container>
+            <ng-template #additionCorrect>
+              <p>addition seconds:</p>
+            </ng-template>
+            <ng-template #additionNotCorrect>
+              <p class="notCorrect">addition seconds (integers from -300 to 300):</p>
+            </ng-template>
+          </label>
+          <input [ngClass]="{'notC': !validation.additionSecondsIsCorrect}" id="additionSeconds" type="number" formControlName="additionSeconds">
+        </div>
+
+        <div>
+          <label for="afterMoves">
+            <ng-container *ngIf="validation.afterMovesIsCorrect; then afterCorrect; else afterNotCorrect"></ng-container>
+            <ng-template #afterCorrect>
+              <p>after moves:</p>
+            </ng-template>
+            <ng-template #afterNotCorrect>
+              <p class="notCorrect">after moves (positive integers from 0 to 20):</p>
+            </ng-template>
+          </label>
+          <input [ngClass]="{'notC': !validation.afterMovesIsCorrect}" id="afterMoves" type="number" formControlName="afterMoves">
+        </div>
+
+        <div id="subcanc">
+          <button type="submit">set options</button>
+          <button (click)="cancel()">cancel</button>
+        </div>
+
+      </form>
+
+    </ng-container>
+
+  </ng-template>
+
+</div>

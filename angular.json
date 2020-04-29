@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ChessTimer"
+    }
+  },
+  "defaultProject": "ChessTimer",
+  "cli": {
+    "analytics": false
+  }
 }
